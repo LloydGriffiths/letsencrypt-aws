@@ -15,7 +15,5 @@ RUN .venv/bin/pip install -r requirements.txt
 COPY letsencrypt-aws.py ./
 RUN chmod 644 letsencrypt-aws.py
 
-USER nobody
-
 ENTRYPOINT [".venv/bin/python", "letsencrypt-aws.py"]
 CMD ["update-certificates"]
