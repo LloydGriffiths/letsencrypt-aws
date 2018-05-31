@@ -247,10 +247,10 @@ def find_dns_challenge(authz):
 
 
 def generate_certificate_name(hosts, cert):
-    return "{serial}-{expiration}-{hosts}".format(
-        serial=cert.serial,
+    return "{apex}-{expiration}-{serial}".format(
+        apex=sorted(hosts, key=len)[0],
         expiration=cert.not_valid_after.date(),
-        hosts="-".join(h.replace(".", "_") for h in hosts),
+        serial=cert.serial,
     )[:128]
 
 
